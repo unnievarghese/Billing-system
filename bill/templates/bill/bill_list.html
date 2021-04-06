@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{%extends 'bill/base.html'%}
+
+{%block body_block%}
+<body>
+    <table class="table">
+         <tr>
+            <td>SL</td>
+            <td>Bill Number</td>
+            <td>Date</td>
+            <td>Coustomer</td>
+            <td>Phone</td>
+            <td>Total</td>
+        </tr>
+    {%for order in orders%}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{order.bill_number}}</td>
+            <td>{{order.bill_date}}</td>
+            <td>{{order.customer_name}}</td>
+            <td>{{order.phone_number}}</td>
+            <td>{{order.bill_total}}</td>
+        </tr>
+    {%endfor%}
+    </table>
+</body>
+{%endblock%}

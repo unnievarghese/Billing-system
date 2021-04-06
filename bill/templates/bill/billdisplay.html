@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{%extends 'bill/base.html'%}
+
+{%block body_block%}
+<form method="post">
+{%csrf_token%}
+
+<h3 style="color:red;">Bill Number: {{billnum}} </h3>
+<table class="table" style="background-color:rgb(252, 187, 248);color:black">
+    <tr>
+        <td>SL</td>
+        <td>Product Name</td>
+        <td>Product Quantity</td>
+        <td>Amount</td>
+    </tr>
+{% for line in orderlines%}
+
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{line.product_name}}</td>
+        <td>{{line.product_qty}}</td>
+        <td>{{line.amount}}</td>
+    </tr>
+{%endfor%}
+</table>
+<div class="row">
+   <div class="col-lg-9">
+            <input type="submit" value="Confirm" class="btn btn-success">
+   </div>
+    <div class="col-lg-2" style="background-color:rgb(169, 252, 3)">
+        <h4 style="float:left;color:black;">Total:</h4>
+        <h4 style="color:black">{{total}}</h4>
+    </div>
+</div>
+</form>
+{%endblock%}

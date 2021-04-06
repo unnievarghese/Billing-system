@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{%extends 'bill/base.html'%}
+
+{%block body_block%}
+
+<div class="row">
+    <div class="col"></div>
+        <div class="col-lg-4">
+                <form method="post">
+                    {%csrf_token%}
+                    {{form.as_p}}
+                    <input type="submit" class='btn btn-success' value="Create Product">
+                </form>
+
+                <table class="table" style="background-color:rgb(252, 187, 248);color:black;margin-top:20px">
+                    <tr>
+                        <td>Sl</td>
+                        <td>Product Name</td>
+                    </tr>
+                    {%for product in productlist%}
+                    <tr>
+                        <td>{{product.id}}</td>
+                        <td>{{product.product_name}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+        </div>
+    <div class="col"></div>
+</div>
+
+
+{%endblock%}

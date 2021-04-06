@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{%extends 'bill/base.html'%}
+
+{%block body_block%}
+
+<div class="row">
+    <div class="col"></div>
+        <div class="col-lg-4">
+            <form method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" class='btn btn-success' value="create purchase">
+            </form>
+        </div>
+    <div class="col"></div>
+</div>
+
+
+<table class="table" style="background-color:rgb(252, 187, 248);color:black;margin-top:20px">
+    <tr>
+        <td>Sl</td>
+        <td>Product</td>
+        <td>Quantity</td>
+        <td>Purchase price</td>
+        <td>Selling price</td>
+        <td>Date</td>
+    </tr>
+    {%for purchase in purchaselist%}
+    <tr>
+        <td>{{purchase.id}}</td>
+        <td>{{purchase.product}}</td>
+        <td>{{purchase.quantity}}</td>
+        <td>{{purchase.purchase_price}}</td>
+        <td>{{purchase.selling_price}}</td>
+        <td>{{purchase.purchase_date}}</td>
+        <td><a class="btn btn-danger" href="{%url 'purchasedelete' purchase.id%}">Delete</a></td>
+        <td><a class="btn btn-primary" href="{%url 'purchaseedit' purchase.id%}">Edit</a></td>
+    </tr>
+    {%endfor%}
+</table>
+
+{%endblock%}
